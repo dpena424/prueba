@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palma Imperial Club Campestre - Tu Refugio en el Tolima</title>
+    
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carga de la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Iconos (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Swiper.js (Carrusel) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <style>
+        /* Definición de la paleta de colores del manual de marca */
+        :root {
+            --brand-blue: #01265E;
+            --brand-gold: #B7812C;
+            --brand-teal: #2CBAAC;
+            --brand-gray: #BDBDBD;
+        }
+
+        /* Aplicación de fuentes y colores base */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+
+        /* Clases de utilidad con los colores de marca */
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .border-brand-blue { border-color: var(--brand-blue); }
+
+        .bg-brand-gold { background-color: var(--brand-gold); }
+        .text-brand-gold { color: var(--brand-gold); }
+        .border-brand-gold { border-color: var(--brand-gold); }
+        
+        .bg-brand-teal { background-color: var(--brand-teal); }
+        .text-brand-teal { color: var(--brand-teal); }
+        .border-brand-teal { border-color: var(--brand-teal); }
+
+        .bg-brand-gray { background-color: var(--brand-gray); }
+        .text-brand-gray { color: var(--brand-gray); }
+
+        /* Estilo para los títulos */
+        h1, h2, h3 {
+            font-weight: 900; /* Black */
+            color: var(--brand-blue); /* Color principal para títulos */
+        }
+
+        /* Iconos Lucide */
+        i-lucide {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        /* Estilos para el carrusel Swiper */
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 60px; /* Más espacio para la paginación */
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px; /* Ancho de la tarjeta */
+            height: auto;
+        }
+        
+        /* Colores de marca para la navegación del carrusel */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--brand-gold) !important;
+            font-weight: 900;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--brand-gold) !important;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- 
+      HEADER (Heurística #4: Consistencia y Estándares)
+      - Encabezado blanco, limpio, inspirado en La Haus.
+    -->
+    <header class="bg-white text-brand-blue shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo de Texto (basado en el manual) -->
+            <a href="#" class="text-xl font-bold">
+                PALMA IMPERIAL <span class="font-light text-base">Club Campestre</span>
+            </a>
+            
+            <!-- Menú de Navegación (Desktop) -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#proyecto" class="hover:text-brand-teal transition-colors">El Proyecto</a>
+                <a href="#amenidades" class="hover:text-brand-teal transition-colors">Amenidades</a>
+                <a href="#ubicacion" class="hover:text-brand-teal transition-colors">Ubicación</a>
+                <a href="#inversion" class="hover:text-brand-teal transition-colors">Inversión</a>
+                <a href="#contacto" class="bg-brand-gold hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-md">
+                    Quiero Información
+                </a>
+            </div>
+
+            <!-- Botón de Menú (Móvil) -->
+            <button id="mobile-menu-button" class="md:hidden text-brand-blue focus:outline-none">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+
+        <!-- Menú Móvil (Oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 absolute w-full shadow-xl">
+            <a href="#proyecto" class="block px-6 py-3 text-brand-blue hover:bg-gray-100">El Proyecto</a>
+            <a href="#amenidades" class="block px-6 py-3 text-brand-blue hover:bg-gray-100">Amenidades</a>
+            <a href="#ubicacion" class="block px-6 py-3 text-brand-blue hover:bg-gray-100">Ubicación</a>
+            <a href="#inversion" class="block px-6 py-3 text-brand-blue hover:bg-gray-100">Inversión</a>
+            <a href="#contacto" class="block px-6 py-3 text-white bg-brand-gold hover:bg-yellow-600">Quiero Información</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 
+          HERO SECTION (Heurística #8: Diseño estético y minimalista)
+          - Revertido al diseño original con texto centrado y dos botones.
+          - SIN elementos de Swiper/carrusel
+        -->
+        <section class="relative h-[80vh] min-h-[500px] text-white flex items-center">
+            <!-- Imagen de fondo -->
+            <div class="absolute inset-0">
+                <img src="https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                     alt="Vista de una casa campestre moderna en Palma Imperial" 
+                     class="w-full h-full object-cover">
+                <!-- Overlay oscuro para legibilidad -->
+                <div class="absolute inset-0 bg-black/60"></div>
+            </div>
+            
+            <!-- Contenido del Hero -->
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
+                    PALMA IMPERIAL CLUB CAMPESTRE
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-6 max-w-3xl mx-auto">
+                    Tu casa campestre, tu refugio en el corazón del Tolima.
+                </p>
+                <p class="text-lg md:text-xl mb-8">
+                    Casas desde <span class="font-bold text-brand-teal">$107 millones</span> hasta <span class="font-bold text-brand-teal">$682 millones</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contacto" class="bg-brand-gold hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors shadow-lg">
+                        Quiero más información
+                    </a>
+                    <a href="#amenidades" class="bg-brand-teal hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors shadow-lg">
+                        Ver Amenidades
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          BANNER "MEGA-PROYECTO"
+        -->
+        <section class="bg-brand-gold text-white text-center p-4 shadow-md">
+            <p class="font-semibold text-lg">
+                Un proyecto exclusivo que forma parte del <span class="font-black tracking-wide">MEGA-PROYECTO CIUDAD IMPERIO</span>
+            </p>
+        </section>
+
+        <!-- 
+          SOBRE EL PROYECTO
+        -->
+        <section id="proyecto" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                    <!-- Imagen del Proyecto -->
+                    <div class="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                             alt="Render de la casa modelo con piscina" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Texto del Proyecto -->
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-black mb-6">
+                            Construye el Estilo de Vida que Sueñas
+                        </h2>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            Palma Imperial Club Campestre es más que un proyecto de vivienda: es el sueño de tener una casa propia donde el descanso, la naturaleza y la inversión se unen.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                            Es un proyecto campestre legalizado, con licencias completas y matrículas independientes.
+                        </p>
+                        
+                        <!-- Puntos Clave con Íconos -->
+                        <ul class="space-y-5">
+                            <li class="flex items-start">
+                                <span class="bg-brand-teal text-white p-2 rounded-full mr-4"><i data-lucide="check-circle-2"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-brand-blue">Totalmente Legalizado</h4>
+                                    <p class="text-gray-600">Licencias completas y matrículas independientes para tu seguridad.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-brand-teal text-white p-2 rounded-full mr-4"><i data-lucide="key-round"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-brand-blue">Escritura con 40%</h4>
+                                    <p class="text-gray-600">Recibe el lote escriturado al completar la cuota inicial del 40%.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-brand-teal text-white p-2 rounded-full mr-4"><i data-lucide="palette"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-brand-blue">Personaliza tu Hogar</h4>
+                                    <p class="text-gray-600">Entregamos en obra gris para que personalices el interior a tu gusto.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          AMENIDADES (Heurística #6: Reconocer en lugar de recordar)
+          - Convertido en un carrusel dinámico con imágenes (Swiper.js).
+          - CON elementos de Swiper/carrusel (flechas y puntos)
+        -->
+        <section id="amenidades" class="py-20 md:py-28 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-black mb-12 text-center">
+                    Un Entorno Planeado para Disfrutar
+                </h2>
+            </div>
+            
+            <!-- Contenedor del Carrusel Swiper -->
+            <div class="swiper-container mySwiper">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Slide 1: Piscina -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Piscina para adultos y niños" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Piscina Adultos y Niños</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: Canchas -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Canchas deportivas" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Canchas Deportivas</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Zonas BBQ -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Zonas BBQ" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Zonas BBQ</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Miradores -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1660603/pexels-photo-1660603.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Miradores" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Miradores</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 5: Salón Social -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Salón social" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Salón Social</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 6: Senderos -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Senderos ecológicos" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Senderos Ecológicos</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 7: Gimnasio -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/2011383/pexels-photo-2011383.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Gimnasio al aire libre" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Gimnasio al Aire Libre</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 8: Kioscos -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1309766/pexels-photo-1309766.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Kioscos familiares" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Kioscos Familiares</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 9: Juegos Infantiles -->
+                    <div class="swiper-slide px-4">
+                        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://images.pexels.com/photos/592077/pexels-photo-592077.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
+                                 alt="Zona de juegos infantiles" class="w-full h-56 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl text-brand-blue">Zona de Juegos Infantiles</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Paginación (Puntos) -->
+                <div class="swiper-pagination"></div>
+                <!-- Botones de Navegación (Flechas) -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+        
+        <!-- 
+          UBICACIÓN
+        -->
+        <section id="ubicacion" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">
+                    <!-- Mapa/Imagen Ubicación -->
+                    <div class="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.pexels.com/photos/4219642/pexels-photo-4219642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                             alt="Paisaje montañoso verde de la región del Tolima" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Texto Ubicación -->
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-black mb-6">
+                            El Encanto del Guamo, Tolima
+                        </h2>
+                        <p class="text-xl text-brand-gold font-semibold mb-4">
+                            Naturaleza, tradición y crecimiento.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            Ubicado estratégicamente a solo 20 minutos de El Espinal y a menos de 2 horas de Ibagué. Su clima cálido, gente amable y riqueza cultural lo convierten en el nuevo polo de desarrollo turístico y campestre del Tolima.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            Disfruta de fiestas tradicionales, ríos, cascadas y una gastronomía única, con una valorización promedio del <span class="font-bold text-brand-blue">12% anual</span> en la región.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          INVERSIÓN & RENTABILIDAD
+        -->
+        <section id="inversion" class="py-20 md:py-28 bg-brand-blue text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">
+                    Inversión Inteligente y Rentabilidad
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto mb-12 text-gray-200">
+                    Invertir en Palma Imperial no solo te da una casa, también una fuente de ingresos. Te ayudamos a rentabilizarla mediante administración de rentas cortas, con un <span class="font-bold text-brand-teal">fee del 12%</span> sobre las ganancias.
+                </p>
+
+                <!-- Stats de Inversión -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm">
+                        <h3 class="text-5xl font-black text-brand-teal mb-3">65%</h3>
+                        <p class="text-lg text-gray-100">Ocupación turística promedio de la región.</p>
+                    </div>
+                    <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm">
+                        <h3 class="text-5xl font-black text-brand-teal mb-3">$350K</h3>
+                        <p class="text-lg text-gray-100">Ticket promedio por noche ($300K - $400K).</p>
+                    </div>
+                    <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm">
+                        <h3 class="text-5xl font-black text-brand-teal mb-3">$5M</h3>
+                        <p class="text-lg text-gray-100">Renta estimada mensual ($4M - $6M).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          CÓMO COMPRAR
+        -->
+        <section id="como-comprar" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-black mb-12 text-center">
+                    Modalidades de Pago y Beneficios
+                </h2>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Card de Proceso -->
+                    <div class="border-l-4 border-brand-gold bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2"><span class="text-brand-gold">01.</span> Separación</h3>
+                        <p class="text-gray-700">Separa tu casa campestre con solo <span class="font-bold">$2 millones</span>.</p>
+                    </div>
+                    <!-- Card de Proceso -->
+                    <div class="border-l-4 border-brand-gold bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2"><span class="text-brand-gold">02.</span> Cuota Inicial (40%)</h3>
+                        <p class="text-gray-700">Paga dentro de los primeros 30 días, firma la promesa y <span class="font-bold">¡recibe la escritura del lote!</span></p>
+                    </div>
+                    <!-- Card de Proceso -->
+                    <div class="border-l-4 border-brand-gold bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2"><span class="text-brand-gold">03.</span> Pago de Contado</h3>
+                        <p class="text-gray-700">Obtén un <span class="font-bold">descuento especial</span>. La casa se entrega 6 meses desde la promesa.</p>
+                    </div>
+                    <!-- Card de Proceso -->
+                    <div class="border-l-4 border-brand-gold bg-gray-50 p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-xl text-brand-blue mb-2"><span class="text-brand-gold">04.</span> Financiación</h3>
+                        <p class="text-gray-700">Paga a <span class="font-bold">12, 24 o 36 meses</span>. La casa se entrega 6 meses después del último pago.</p>
+                    </div>
+                </div>
+                <p class="text-center text-lg text-gray-700 mt-12 max-w-3xl mx-auto">
+                    Tu inversión está protegida y respaldada jurídicamente. Todo el proyecto cuenta con licencias, servicios públicos y acueducto propio.
+                </p>
+            </div>
+        </section>
+
+        <!-- 
+          RESPALDO
+        -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-black mb-6">
+                    Respaldo y Confianza
+                </h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
+                    Palma Imperial cuenta con el respaldo de EKO, NEXT y MOBI Bienes Raíces, la comercializadora inmobiliaria que se encarga de hacer crecer tu patrimonio brindando seguridad jurídica y comercial.
+                </p>
+                <!-- Logos (Texto) -->
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 text-brand-gray">
+                    <span class="text-3xl font-bold">EKO</span>
+                    <span class="text-3xl font-bold">NEXT</span>
+                    <span class="text-3xl font-bold">MOBI Bienes Raíces</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          CONTACTO / CTA FINAL (Heurística #5: Prevención de Errores)
+          - Re-agregado al final de la página.
+        -->
+        <section id="contacto" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto bg-gray-50 p-8 md:p-12 rounded-xl shadow-2xl border-t-4 border-brand-gold">
+                    <h2 class="text-3xl md:text-4xl font-black mb-4 text-center">
+                        ¡Haz Parte de Palma Imperial Hoy!
+                    </h2>
+                    <p class="text-lg text-gray-700 text-center mb-8">
+                        Tu refugio en la naturaleza, tu inversión inteligente, tu legado. Déjanos tus datos y un asesor te contactará.
+                    </p>
+                    
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-bold text-gray-700 mb-2">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-bold text-gray-700 mb-2">Teléfono / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent">
+                        </div>
+                        <div>
+                            <button type="submit" 
+                                    class="w-full bg-brand-gold hover:bg-yellow-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors shadow-lg">
+                                Enviar y Recibir Información
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+      FOOTER
+    -->
+    <footer class="bg-brand-blue text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg font-bold text-white mb-2">
+                PALMA IMPERIAL <span class="font-light text-base">Club Campestre</span>
+            </p>
+            <p class="mb-4">
+                Un MEGA-PROYECTO de <span class="font-semibold">Ciudad Imperio</span>.
+            </p>
+            <p class="text-sm">
+                &copy; 2025 Palma Imperial Club Campestre. Todos los derechos reservados.
+            </p>
+            <p class="text-xs mt-4 text-gray-400">
+                *Imágenes de ilustrativas, pueden estar sujetas a modificaciones. Los precios pueden cambiar sin previo aviso.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Swiper.js (Carrusel) JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Script para el menú móvil e inicialización de íconos -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Lógica del Menú Móvil
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Cambiar ícono de menú (opcional)
+            const icon = menuButton.querySelector('[data-lucide]');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Volver a renderizar el ícono
+        });
+
+        // Ocultar menú al hacer clic en un enlace
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuButton.querySelector('[data-lucide]').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Inicialización de Swiper.js SOLO para la sección de amenidades
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1, // Mostrar 1 slide en móviles
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                // > 640px
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                // > 1024px
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                // > 1280px
+                1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
+            }
+        });
+    </script>
+</body>
+</html>
